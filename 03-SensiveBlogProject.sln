@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensiveBlog.EntityLayer", "SensiveBlog.EntityLayer\SensiveBlog.EntityLayer.csproj", "{E5BF3FC0-9C57-4084-94A0-50FEE30CBA4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensiveBlog.EntityLayer", "SensiveBlog.EntityLayer\SensiveBlog.EntityLayer.csproj", "{E5BF3FC0-9C57-4084-94A0-50FEE30CBA4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensiveBlog.DataAccessLayer", "SensiveBlog.DataAccessLayer\SensiveBlog.DataAccessLayer.csproj", "{57B35F56-9778-4970-9C8E-EF81A2DB9539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensiveBlog.BusinessLayer", "SensiveBlog.BusinessLayer\SensiveBlog.BusinessLayer.csproj", "{36A70C2E-38FD-447B-AD2C-229A8568FABE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensiveBlog.PresentationLayer", "SensiveBlog.PresentationLayer\SensiveBlog.PresentationLayer.csproj", "{009F2C61-89AC-4F73-81F0-9E9EB1815578}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{E5BF3FC0-9C57-4084-94A0-50FEE30CBA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5BF3FC0-9C57-4084-94A0-50FEE30CBA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5BF3FC0-9C57-4084-94A0-50FEE30CBA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B35F56-9778-4970-9C8E-EF81A2DB9539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B35F56-9778-4970-9C8E-EF81A2DB9539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B35F56-9778-4970-9C8E-EF81A2DB9539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B35F56-9778-4970-9C8E-EF81A2DB9539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36A70C2E-38FD-447B-AD2C-229A8568FABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A70C2E-38FD-447B-AD2C-229A8568FABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A70C2E-38FD-447B-AD2C-229A8568FABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A70C2E-38FD-447B-AD2C-229A8568FABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009F2C61-89AC-4F73-81F0-9E9EB1815578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009F2C61-89AC-4F73-81F0-9E9EB1815578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009F2C61-89AC-4F73-81F0-9E9EB1815578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009F2C61-89AC-4F73-81F0-9E9EB1815578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
