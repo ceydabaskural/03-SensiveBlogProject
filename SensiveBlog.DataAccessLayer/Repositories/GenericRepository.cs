@@ -12,7 +12,6 @@ namespace SensiveBlog.DataAccessLayer.Repositories
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         private readonly SensiveContext _context;
-
         public GenericRepository(SensiveContext context)
         {
             _context = context;
