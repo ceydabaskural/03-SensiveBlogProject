@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SensiveBlog.DataAccessLayer.Context;
 
@@ -11,9 +12,10 @@ using SensiveBlog.DataAccessLayer.Context;
 namespace SensiveBlog.DataAccessLayer.Migrations
 {
     [DbContext(typeof(SensiveContext))]
-    partial class SensiveContextModelSnapshot : ModelSnapshot
+    [Migration("20241109072627_mig5")]
+    partial class mig5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -298,9 +300,6 @@ namespace SensiveBlog.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
 
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -312,8 +311,6 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("CommentId");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Comments");
                 });
@@ -453,17 +450,6 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("SensiveBlog.EntityLayer.Concrete.Comment", b =>
-                {
-                    b.HasOne("SensiveBlog.EntityLayer.Concrete.AppUser", "AppUser")
-                        .WithMany("Comments")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("SensiveBlog.EntityLayer.Category", b =>
                 {
                     b.Navigation("Articles");
@@ -472,8 +458,6 @@ namespace SensiveBlog.DataAccessLayer.Migrations
             modelBuilder.Entity("SensiveBlog.EntityLayer.Concrete.AppUser", b =>
                 {
                     b.Navigation("Articles");
-
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
