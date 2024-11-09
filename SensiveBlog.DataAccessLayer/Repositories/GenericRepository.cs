@@ -20,7 +20,7 @@ namespace SensiveBlog.DataAccessLayer.Repositories
         public void Delete(int id)
         {
             //entitylerden tamamen bağımsız crud işlemlerinde tekrarı önleyen bir yapı kullandık ve bunun ismi Repository Tasarım Deseni : crud işlemlerinde tekrarı önler
-            var value=_context.Set<T>().Find(id); //T: entitylere refer ediyor
+            var value = _context.Set<T>().Find(id); //T: entitylere refer ediyor
             _context.Set<T>().Remove(value);
             _context.SaveChanges();
         }
@@ -37,12 +37,14 @@ namespace SensiveBlog.DataAccessLayer.Repositories
 
         public void Insert(T entity) //void olanlar return etmez
         {
-             _context.Set<T>().Add(entity);
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+            _context.SaveChanges();
         }
     }
 }

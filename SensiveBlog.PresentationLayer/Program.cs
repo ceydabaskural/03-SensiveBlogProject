@@ -1,4 +1,8 @@
+using SensiveBlog.BusinessLayer.Abstract;
+using SensiveBlog.BusinessLayer.Concrete;
+using SensiveBlog.DataAccessLayer.Abstract;
 using SensiveBlog.DataAccessLayer.Context;
+using SensiveBlog.DataAccessLayer.EntityFramework;
 using SensiveBlog.EntityLayer.Concrete;
 using SensiveBlog.PresentationLayer.Models;
 
@@ -8,6 +12,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<SensiveContext>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentityValidator>();
+
+
+//Bu yapı registiration
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IArticleDal, EfArticleDal>();
+builder.Services.AddScoped<IArticleService, ArticleManager>();
+
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
+builder.Services.AddScoped<IContactDal, EfContactDal>();
+builder.Services.AddScoped<IContactService, ContactManager>();
 
 builder.Services.AddControllersWithViews();
 

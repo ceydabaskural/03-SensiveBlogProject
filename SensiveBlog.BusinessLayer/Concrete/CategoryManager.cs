@@ -1,4 +1,5 @@
 ﻿using SensiveBlog.BusinessLayer.Abstract;
+using SensiveBlog.DataAccessLayer.Abstract;
 using SensiveBlog.EntityLayer;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,47 @@ namespace SensiveBlog.BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
+        //ICategoryDal dan türetmemizin sebebi içinde IGenericDal var , IGenericDal da da ekleme,silme güncelleme gibi işlemler var onların içerisine erişim sağlayabilmek için böyle bir yöntem kullandık:
+
+        private readonly ICategoryDal _categoryDal;
+
+
+        //yukarıda oluşturduğumuz field dan bir constructor oluşturduk, constructor bizim yerimize new leme işlemini gerçekleştiriyor,yani nesne örneğini alıyor(bu da dependency injection olarak geçiyor):
+        public CategoryManager(ICategoryDal categoryDal) 
+        {
+            _categoryDal = categoryDal;
+        }
+
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+           _categoryDal.Delete(id);
         }
 
         public List<Category> TGetAll()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public Category TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetById(id);
         }
 
         public void TInsert(Category entity)
         {
-            throw new NotImplementedException();
+            if (entity.CategoryName.Length>=5 && entity.CategoryName.Length<= 50)
+            {
+                _categoryDal.Insert(entity);
+            }
+            else
+            {
+                //hata mesajı
+            }
         }
 
         public void TUpdate(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(entity);
         }
     }
 }
