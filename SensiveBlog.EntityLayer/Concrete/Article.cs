@@ -15,5 +15,7 @@ namespace SensiveBlog.EntityLayer.Concrete
         public string CoverImageUrl { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; } //ilişki kurmak için bunu ekliyoruz aynı zamanda article üzerinden category sınıfının verilerine ulaşmak için
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }

@@ -36,7 +36,14 @@ namespace SensiveBlog.PresentationLayer.Controllers
             {
                 return RedirectToAction("Index","Login");
             }
-            return View();
+            else
+            {
+                foreach (var item in result.Errors) //kayıt işlemi yapılırken hata oluşursa bu kayıt işlemini okusun
+                {
+                    ModelState.AddModelError("", item.Description);//ve hataları yazdırsın
+                }
+                return View();
+            }
         }
     }
 }
