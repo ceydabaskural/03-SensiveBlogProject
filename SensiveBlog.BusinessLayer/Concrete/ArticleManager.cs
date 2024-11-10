@@ -18,6 +18,16 @@ namespace SensiveBlog.BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
+        public List<Article> TArticleListwithCategory()
+        {
+            return _articleDal.ArticleListwithCategory();
+        }
+
+        public List<Article> TArticleListwithCategoryAndAppUser()
+        {
+            return _articleDal.ArticleListwithCategoryAndAppUser();
+        }
+
         public void TDelete(int id)
         {
             _articleDal.Delete(id);

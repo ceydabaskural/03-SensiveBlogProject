@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace SensiveBlog.BusinessLayer.Abstract
 {
-    public interface IArticleService : IGenericService<Article>
+    public interface IAppUserService : IGenericService<AppUser>
     {
-        List<Article> TArticleListwithCategory();
-        List<Article> TArticleListwithCategoryAndAppUser();
     }
 }

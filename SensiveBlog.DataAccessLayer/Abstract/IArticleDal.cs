@@ -9,5 +9,8 @@ namespace SensiveBlog.DataAccessLayer.Abstract
 {
     public interface IArticleDal : IGenericDal<Article>
     {
+        //Article listesini Categoryleriyle getiren bir metot tanımladık:
+        List<Article> ArticleListwithCategory();
+        List<Article> ArticleListwithCategoryAndAppUser();
     }
 }
