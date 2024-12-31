@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using SensiveBlog.BusinessLayer.Abstract;
+using SensiveBlog.BusinessLayer.ValidationRules.CategoryValidationRules;
 using SensiveBlog.DataAccessLayer.Abstract;
 using SensiveBlog.EntityLayer;
 
@@ -8,16 +10,19 @@ namespace SensiveBlog.PresentationLayer.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
+        private readonly IArticleService _articleService;
 
-        public CategoryController(ICategoryService categoryService)
+
+        public CategoryController(ICategoryService categoryService, IArticleService articleService)
         {
             _categoryService = categoryService;
+            _articleService = articleService;
         }
 
-        public IActionResult CategoryList()
+        public IActionResult Index()
         {
-            var values = _categoryService.TGetAll();
-            return View(values);
+            var value = _articleService.TArticleListwithCategoryAndAppUser();
+            return View(value);
         }
 
         public IActionResult CreateCategory()
@@ -28,8 +33,25 @@ namespace SensiveBlog.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult CreateCategory(Category category)
         {
-            _categoryService.TInsert(category);
-            return RedirectToAction("CategoryList");
+            //bellekteki hata mesajlarını yok sayıp bizim yazdığımız hata mesajını yazdırmayı sağlar.
+            ModelState.Clear();
+            CreateCategoryValidator validationRules = new CreateCategoryValidator();
+            ValidationResult result = validationRules.Validate(category);
+            if (result.IsValid)
+            {
+                _categoryService.TInsert(category);
+                return RedirectToAction("CategoryList");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+
+            
         }
 
         public IActionResult DeleteCategory(int id)

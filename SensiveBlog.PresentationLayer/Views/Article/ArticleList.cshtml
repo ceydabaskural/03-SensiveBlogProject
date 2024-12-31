@@ -1,6 +1,7 @@
 ﻿@model List<Article>
 @{
     Layout = null;
+    int count = 0;
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -9,7 +10,7 @@
     <br /><br />
     <table class="table table-bordered">
         <tr>
-            <th>#</th>
+            <th>Makale No</th>
             <th>Başlık</th>
             <th>Kategori</th>
             <th>Yazar</th>
@@ -20,15 +21,16 @@
         </tr>
         @foreach (var item in Model)
         {
+            count++;
             <tr>
-                <td>@item.ArticleId</td>
+                <td>@count</td>
                 <td>@item.Title</td>
                 <td>@item.CategoryId</td>
                 <td>@item.AppUserId</td>
                 <td>@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
-                <td><a href="#" class="btn btn-warning">Detaylar</a></td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Article/ArticleDetails/@item.ArticleId" class="btn btn-warning">Detaylar</a></td>
+                <td><a href="/Article/DeleteArticle/@item.ArticleId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Article/UpdateArticle/@item.ArticleId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
     </table>

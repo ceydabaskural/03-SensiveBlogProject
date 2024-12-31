@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using SensiveBlog.BusinessLayer.Abstract;
 using SensiveBlog.BusinessLayer.Concrete;
+using SensiveBlog.BusinessLayer.Container;
 using SensiveBlog.DataAccessLayer.Abstract;
 using SensiveBlog.DataAccessLayer.Context;
 using SensiveBlog.DataAccessLayer.EntityFramework;
@@ -13,21 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SensiveContext>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentityValidator>();
 
+builder.Services.ContainerDependencies(); //extension sınıfını çağırdık
 
-//Bu yapı registiration
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-builder.Services.AddScoped<IArticleDal, EfArticleDal>();
-builder.Services.AddScoped<IArticleService, ArticleManager>();
-
-builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-builder.Services.AddScoped<ICommentService, CommentManager>();
-
-builder.Services.AddScoped<IContactDal, EfContactDal>();
-builder.Services.AddScoped<IContactService, ContactManager>();
-
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 var app = builder.Build();
 
@@ -49,5 +40,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

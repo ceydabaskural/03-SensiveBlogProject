@@ -15,5 +15,6 @@ namespace SensiveBlog.EntityLayer.Concrete
         public string ImageUrl { get; set; }
         public List<Article> Articles { get; set; }
         public List<Comment> Comments { get; set; }
+        public string Description { get; set; }
     }
 }

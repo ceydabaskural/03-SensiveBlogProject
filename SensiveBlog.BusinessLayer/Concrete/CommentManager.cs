@@ -18,6 +18,11 @@ namespace SensiveBlog.BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public int CountCommentsByArticleId(Article article)
+        {
+            return _commentDal.CountCommentsByArticleId(article);
+        }
+
         public void TDelete(int id)
         {
             _commentDal.Delete(id);
@@ -33,6 +38,11 @@ namespace SensiveBlog.BusinessLayer.Concrete
             return _commentDal.GetById(id);
         }
 
+        public List<Comment> TGetCommentsByArticleId(int id)
+        {
+            return _commentDal.GetCommentsByArticleId(id);
+        }
+
         public void TInsert(Comment entity)
         {
             _commentDal.Insert(entity);
@@ -42,5 +52,6 @@ namespace SensiveBlog.BusinessLayer.Concrete
         {
             _commentDal.Update(entity);
         }
+
     }
 }

@@ -9,5 +9,7 @@ namespace SensiveBlog.BusinessLayer.Abstract
 {
     public interface ICommentService : IGenericService<Comment>
     {
+        public List<Comment> TGetCommentsByArticleId(int id);
+        public int CountCommentsByArticleId(Article article);
     }
 }

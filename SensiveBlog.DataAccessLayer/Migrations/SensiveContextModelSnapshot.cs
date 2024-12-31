@@ -187,6 +187,10 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -301,6 +305,9 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -314,6 +321,8 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                     b.HasKey("CommentId");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -461,7 +470,15 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SensiveBlog.EntityLayer.Concrete.Article", "Article")
+                        .WithMany("Comments")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("SensiveBlog.EntityLayer.Category", b =>
@@ -473,6 +490,11 @@ namespace SensiveBlog.DataAccessLayer.Migrations
                 {
                     b.Navigation("Articles");
 
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("SensiveBlog.EntityLayer.Concrete.Article", b =>
+                {
                     b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618

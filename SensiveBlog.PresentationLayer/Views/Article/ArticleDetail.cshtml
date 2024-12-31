@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_SensiveLayout.cshtml";
+}
+        <!-- Yorumlar -->
+
+        <!-- Yeni Yorum Yapma -->
+        @* @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new {id=ViewBag.i}) *@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    @await Component.InvokeAsync("_ArticleDetailHeadComponentPartial")
+
+    <section class="blog-post-area section-margin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    @await Component.InvokeAsync("_ArticleDetailListComponentPartial", new { id = ViewBag.i })
+
+                    @await Component.InvokeAsync("_ArticleDetailCommentListComponentPartial", new { id = ViewBag.i })
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>

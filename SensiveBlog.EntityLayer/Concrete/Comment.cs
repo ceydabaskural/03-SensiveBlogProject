@@ -14,5 +14,7 @@ namespace SensiveBlog.EntityLayer.Concrete
         public bool Status { get; set; }
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        public int ArticleId { get; set; } //her bir yorumda makale id olmalı çünkü hangi makaleye yorum yapıldığını bulmalıyız
+        public Article Article { get; set; } //yorum yapılan makalenin adını getirebilmek için
     }
 }

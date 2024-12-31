@@ -1,6 +1,7 @@
 ﻿using SensiveBlog.BusinessLayer.Abstract;
 using SensiveBlog.DataAccessLayer.Abstract;
 using SensiveBlog.EntityLayer;
+using SensiveBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace SensiveBlog.BusinessLayer.Concrete
         {
             _categoryDal = categoryDal;
         }
-
         public void TDelete(int id)
         {
            _categoryDal.Delete(id);
@@ -53,5 +53,6 @@ namespace SensiveBlog.BusinessLayer.Concrete
         {
             _categoryDal.Update(entity);
         }
+
     }
 }

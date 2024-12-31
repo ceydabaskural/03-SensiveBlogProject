@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_SensiveLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_ArticleListHeadComponentPartial")
+
+<body>
+    <div class="main-container">
+        <!-- Blog Listesi -->
+        @await Component.InvokeAsync("_ArticleListComponentPartial") 
+
+        <!-- Kategori Listesi -->
+        @await Component.InvokeAsync("_CategoryListComponentPartial")
+    </div>
+</body>
+</html>
+
+

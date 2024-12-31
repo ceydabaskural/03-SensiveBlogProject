@@ -10,6 +10,7 @@
     <form method="post">
         <label>Kategori Adı</label>
         <input type="text" asp-for="CategoryName" class="form-control" />
+        <span class="text-danger" asp-validation-for="CategoryName"></span>
         <br />
         <button class="btn btn-info">Kategori Ekle</button>
     </form>

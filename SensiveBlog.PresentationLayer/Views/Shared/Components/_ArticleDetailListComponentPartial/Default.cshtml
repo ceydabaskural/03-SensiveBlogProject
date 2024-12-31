@@ -1,0 +1,64 @@
+﻿@model Article
+
+<div class="main_blog_details">
+    <img class="img-fluid" src="img/blog/blog4.png" alt="">
+    <a href="#"><h4>@Model.Title</h4></a>
+    <div class="user_details">
+        <div class="float-left">
+            <a href="#">@Model.CategoryId</a>
+        </div>
+        <div class="float-right mt-sm-0 mt-3">
+            <div class="media">
+                <div class="media-body">
+                    <h5>@Model.AppUser</h5>
+                    <p>@Model.CreatedDate.ToString("dd-MMMM-yyyy")</p>
+                </div>
+                <div class="d-flex">
+                    <img width="42" height="42" src="img/blog/user-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>@Model.Description</p>
+
+
+    <div class="news_d_footer flex-column flex-sm-row">
+        <a href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>Lily and 4 people like this</a>
+        <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="navigation-area">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+            <div class="thumb">
+                <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+            </div>
+            <div class="arrow">
+                <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+            </div>
+            <div class="detials">
+                <p>Önceki Blog</p>
+                <a href="#"><h4>@Model.Title.LastOrDefault()</h4></a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+            <div class="detials">
+                <p>Sonraki Blog</p>
+                <a href="#"><h4>@Model.Title.FirstOrDefault()</h4></a>
+            </div>
+            <div class="arrow">
+                <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+            </div>
+            <div class="thumb">
+                <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>

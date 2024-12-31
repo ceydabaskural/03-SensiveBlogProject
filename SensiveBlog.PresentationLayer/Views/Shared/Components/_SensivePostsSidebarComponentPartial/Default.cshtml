@@ -1,0 +1,23 @@
+﻿@model List<Article>
+<div class="single-sidebar-widget popular-post-widget">
+    <h4 class="single-sidebar-widget__title">Popular Post</h4>
+    <div class="popular-post-list">
+        @foreach (var item in Model.Take(3).OrderByDescending(z => z.ArticleId))
+        {
+            <div class="single-post-list">
+                <div class="thumb">
+                    <img class="card-img rounded-0" src="@item.CoverImageUrl" alt="">
+                    <ul class="thumb-info">
+                        <li><a href="#">@item.AppUser.Name</a></li>
+                        <li><a href="/Article/ArticleDetail">@item.CreatedDate.ToShortDateString()</a></li>
+                    </ul>
+                </div>
+                <div class="details mt-20">
+                    <a href="blog-single.html">
+                        <h6>@item.Title</h6>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

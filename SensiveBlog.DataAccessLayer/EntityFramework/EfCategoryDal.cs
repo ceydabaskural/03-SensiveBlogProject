@@ -2,6 +2,7 @@
 using SensiveBlog.DataAccessLayer.Context;
 using SensiveBlog.DataAccessLayer.Repositories;
 using SensiveBlog.EntityLayer;
+using SensiveBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace SensiveBlog.DataAccessLayer.EntityFramework
         public EfCategoryDal(SensiveContext context) : base(context)
         {
         }
+
     }
 }

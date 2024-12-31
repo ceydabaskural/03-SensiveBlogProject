@@ -12,5 +12,9 @@ namespace SensiveBlog.DataAccessLayer.Abstract
         //Article listesini Categoryleriyle getiren bir metot tanımladık:
         List<Article> ArticleListwithCategory();
         List<Article> ArticleListwithCategoryAndAppUser();
+        Article GetLastArticle();
+        List<Article> GetArticlesByAppUserId(int id);
+        public int GetBlogCountByCategory(int categoryId);
+        
     }
 }

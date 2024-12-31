@@ -17,5 +17,6 @@ namespace SensiveBlog.EntityLayer.Concrete
         public Category Category { get; set; } //ilişki kurmak için bunu ekliyoruz aynı zamanda article üzerinden category sınıfının verilerine ulaşmak için
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

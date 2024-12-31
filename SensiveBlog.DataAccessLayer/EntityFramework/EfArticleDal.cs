@@ -30,5 +30,25 @@ namespace SensiveBlog.DataAccessLayer.EntityFramework
             var values = context.Articles.Include(x => x.Category).Include(y => y.AppUser).ToList(); //burada category ve appuser sınıfını Article sınıfına dahil ettik
             return values;
         }
+
+        public List<Article> GetArticlesByAppUserId(int id)
+        {
+            var context = new SensiveContext();
+            var values = context.Articles.Where(x => x.AppUserId == id).ToList();
+            return values;
+        }
+        public Article GetLastArticle()
+        {
+            var context = new SensiveContext();
+            var value = context.Articles.OrderByDescending(x=>x.ArticleId).Take(1).FirstOrDefault();
+            return value;
+        }
+
+        public int GetBlogCountByCategory(int categoryId)
+        {
+            var context = new SensiveContext();
+            var value = context.Articles.Count(m => m.CategoryId == categoryId);
+            return value;
+        }
     }
 }

@@ -38,9 +38,19 @@ namespace SensiveBlog.BusinessLayer.Concrete
             return _articleDal.GetAll();
         }
 
+        public List<Article> TGetArticlesByAppUserId(int id)
+        {
+            return _articleDal.GetArticlesByAppUserId(id);
+        }
+
         public Article TGetById(int id)
         {
             return _articleDal.GetById(id);
+        }
+
+        public Article TGetLastArticle()
+        {
+            return _articleDal.GetLastArticle();
         }
 
         public void TInsert(Article entity)
@@ -59,5 +69,6 @@ namespace SensiveBlog.BusinessLayer.Concrete
                 //hata mesajı
             }
         }
+
     }
 }

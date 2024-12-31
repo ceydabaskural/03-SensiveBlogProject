@@ -9,5 +9,6 @@ namespace SensiveBlog.BusinessLayer.Abstract
 {
     public interface INewsletterService : IGenericService<Newsletter>
     {
+
     }
 }

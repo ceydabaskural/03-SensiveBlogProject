@@ -8,8 +8,7 @@ namespace SensiveBlog.BusinessLayer.Abstract
 {
     public interface IGenericService<T> where T : class
     {
-       //aynı işlemi data acces in içinde yaptık business katmanında bir daha aynısını yapmanın amacı
-       //dal da yaptığımız crud işlemlerini ve listeleme işlemlerini yapacak, businessdakiler ise bizim presentation üzerinden mantıksal sorgulamamalarının yapılıp bu sorgulamalardan doğru bir şekilde geçtikten sonra işlem yapmamızı sağlayan metotlar olacak
+       //aynı işlemi data acces in içinde yaptık business katmanında bir daha aynısını yapmanın amacı dal da yaptığımız crud işlemlerini ve listeleme işlemlerini yapacak, businessdakiler ise bizim presentation üzerinden mantıksal sorgulamamalarının yapılıp bu sorgulamalardan doğru bir şekilde geçtikten sonra işlem yapmamızı sağlayan metotlar olacak
         void TInsert(T entity);
         void TDelete(int id);
         void TUpdate(T entity);
