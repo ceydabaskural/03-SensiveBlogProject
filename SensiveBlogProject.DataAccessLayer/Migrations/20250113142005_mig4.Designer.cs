@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SensiveBlogProject.DataAccessLayer.Context;
 
@@ -11,9 +12,10 @@ using SensiveBlogProject.DataAccessLayer.Context;
 namespace SensiveBlogProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(SensiveContext))]
-    partial class SensiveContextModelSnapshot : ModelSnapshot
+    [Migration("20250113142005_mig4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
