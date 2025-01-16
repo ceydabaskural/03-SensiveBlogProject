@@ -1,10 +1,32 @@
+using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.BusinessLayer.Concrete;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Context;
+using SensiveBlogProject.DataAccessLayer.EntityFramework;
 using SensiveBlogProject.EntityLayer.Concrete;
 using SensiveBlogProject.PresentationLayer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IArticleDal, EfArticleDal>();
+builder.Services.AddScoped<IArticleService, ArticleManager>();
+
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
+builder.Services.AddScoped<IContactDal, EfContactDal>();
+builder.Services.AddScoped<IContactService, ContactManager>();
+
+builder.Services.AddScoped<INewsletterDal, EfNewsletterDal>();
+builder.Services.AddScoped<INewsletterService, NewsletterManager>();
+
+builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
+builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
 
 //AddDbContext: veritabanı bağlantılarımızı yapacağımız yeri belirtmek için kullandık
 builder.Services.AddDbContext<SensiveContext>();

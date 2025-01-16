@@ -1,4 +1,5 @@
 ﻿using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class CommentManager : ICommentService
     {
+        private readonly ICommentDal _commentDal;
+
+        public CommentManager(ICommentDal commentDal)
+        {
+            _commentDal = commentDal;
+        }
+
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _commentDal.Delete(id);
         }
 
         public List<Comment> TGetAll()
         {
-            throw new NotImplementedException();
+            return _commentDal.GetAll();
         }
 
         public Comment TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _commentDal.GetById(id);
         }
 
         public void TInsert(Comment entity)
         {
-            throw new NotImplementedException();
+            _commentDal.Insert(entity);
         }
 
         public void TUpdate(Comment entity)
         {
-            throw new NotImplementedException();
+            _commentDal.Update(entity);
         }
     }
 }

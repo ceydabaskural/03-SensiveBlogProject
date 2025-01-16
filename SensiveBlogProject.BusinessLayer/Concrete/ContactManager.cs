@@ -1,4 +1,5 @@
-﻿using SensiveBlogProject.DataAccessLayer.Abstract;
+﻿using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,31 +10,38 @@ using System.Windows.Input;
 
 namespace SensiveBlogProject.BusinessLayer.Concrete
 {
-    public class ContactManager : IContactDal
+    public class ContactManager : IContactService
     {
-        public void Delete(int id)
+        private readonly IContactDal _contactDal;
+
+        public ContactManager(IContactDal contactDal)
         {
-            throw new NotImplementedException();
+            _contactDal = contactDal;
         }
 
-        public List<Contact> GetAll()
+        public void TDelete(int id)
         {
-            throw new NotImplementedException();
+           _contactDal.Delete(id);
         }
 
-        public Contact GetById(int id)
+        public List<Contact> TGetAll()
         {
-            throw new NotImplementedException();
+            return _contactDal.GetAll();
         }
 
-        public void Insert(Contact entity)
+        public Contact TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _contactDal.GetById(id);
         }
 
-        public void Update(Contact entity)
+        public void TInsert(Contact entity)
         {
-            throw new NotImplementedException();
+            _contactDal.Insert(entity);
+        }
+
+        public void TUpdate(Contact entity)
+        {
+            _contactDal.Update(entity);
         }
     }
 }

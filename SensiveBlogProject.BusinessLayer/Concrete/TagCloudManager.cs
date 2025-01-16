@@ -1,4 +1,5 @@
 ﻿using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class TagCloudManager : ITagCloudService
     {
+        private readonly ITagCloudDal _tagCloudDal;
+
+        public TagCloudManager(ITagCloudDal tagCloudDal)
+        {
+            _tagCloudDal = tagCloudDal;
+        }
+
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _tagCloudDal.Delete(id);
         }
 
         public List<TagCloud> TGetAll()
         {
-            throw new NotImplementedException();
+            return _tagCloudDal.GetAll();
         }
 
         public TagCloud TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _tagCloudDal.GetById(id);
         }
 
         public void TInsert(TagCloud entity)
         {
-            throw new NotImplementedException();
+            _tagCloudDal.Insert(entity);
         }
 
         public void TUpdate(TagCloud entity)
         {
-            throw new NotImplementedException();
+            _tagCloudDal.Update(entity);
         }
     }
 }

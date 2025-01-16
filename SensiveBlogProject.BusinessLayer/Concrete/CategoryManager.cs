@@ -1,4 +1,5 @@
 ﻿using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,44 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
+        private readonly ICategoryDal _categoryDal;
+
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
+
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(id);
         }
 
         public List<Category> TGetAll()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public Category TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetById(id);
         }
 
         public void TInsert(Category entity)
         {
-            throw new NotImplementedException();
+            if (entity.CategoryName.Length>=5 & entity.CategoryName.Length <= 50)
+            {
+                _categoryDal.Insert(entity);
+            }
+            else
+            {
+                //error message
+            }
+            
         }
 
         public void TUpdate(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(entity);
         }
     }
 }

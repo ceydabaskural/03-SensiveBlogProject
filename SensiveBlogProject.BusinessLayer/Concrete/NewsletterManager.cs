@@ -1,4 +1,5 @@
 ﻿using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class NewsletterManager : INewsletterService
     {
+        private readonly INewsletterDal _newsletterDal;
+
+        public NewsletterManager(INewsletterDal newsletterDal)
+        {
+            _newsletterDal = newsletterDal;
+        }
+
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _newsletterDal.Delete(id);
         }
 
         public List<Newsletter> TGetAll()
         {
-            throw new NotImplementedException();
+            return _newsletterDal.GetAll();
         }
 
         public Newsletter TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _newsletterDal.GetById(id);
         }
 
         public void TInsert(Newsletter entity)
         {
-            throw new NotImplementedException();
+            _newsletterDal.Insert(entity);
         }
 
         public void TUpdate(Newsletter entity)
         {
-            throw new NotImplementedException();
+            _newsletterDal.Update(entity);
         }
     }
 }

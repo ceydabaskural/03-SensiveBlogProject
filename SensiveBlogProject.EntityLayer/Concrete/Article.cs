@@ -9,7 +9,7 @@ namespace SensiveBlogProject.EntityLayer.Concrete
     public class Article
     {
         public int ArticleId { get; set; }
-        public string ArticleName { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CoverImageUrl { get; set; }
