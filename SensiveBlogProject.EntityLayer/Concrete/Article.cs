@@ -13,7 +13,14 @@ namespace SensiveBlogProject.EntityLayer.Concrete
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CoverImageUrl { get; set; }
+
+
+        //Category ile Article arasında bağlantı
         public int CategoryId { get; set; }
         public Category Category { get; set; } //bunu yazmamızın amacı ilişkiyi kurmak için ve Article sınıfı üzerinden Category sınıfına ulaşmak için bunu kullanırız
+
+        //AppUser ile Article arasında bağlantı
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
