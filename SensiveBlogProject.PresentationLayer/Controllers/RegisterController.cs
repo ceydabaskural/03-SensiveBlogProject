@@ -36,13 +36,21 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
                 ImageUrl = "test"
 
             };
-            //password ü dışarıdan göndermemizin sebebi, şifrenin şifrelenerek(hashlenerek) kaydolmasından kaynaklı:
+            //passwordu dışarıdan göndermemizin sebebi, şifrenin şifrelenerek(hashlenerek) kaydolmasından kaynaklı:
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View();
+            else
+            {
+                //asp-validation-summary ile index kısmında bu hataları yazdırdık
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View();
+            }
         }
     }
 }

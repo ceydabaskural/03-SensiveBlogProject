@@ -1,6 +1,16 @@
+using SensiveBlogProject.DataAccessLayer.Context;
+using SensiveBlogProject.EntityLayer.Concrete;
+using SensiveBlogProject.PresentationLayer.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+//AddDbContext: veritabanı bağlantılarımızı yapacağımız yeri belirtmek için kullandık
+builder.Services.AddDbContext<SensiveContext>();
+//AddEntityFrameworkStores: identity kütüphanesine ait yapacağımız işlemlere izin verecek olan komut
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentityValidator>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -17,7 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
