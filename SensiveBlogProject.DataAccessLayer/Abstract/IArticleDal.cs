@@ -9,5 +9,12 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
     public interface IArticleDal : IGenericDal<Article>
     {
+        //categorylerin isimlerinin gelmesi için
+        List<Article> ArticleListWithCategory();
+
+        //hem categorylerin hem yazarların isminin gelmesini istedik
+        List<Article> ArticleListWithCategoryAndAppUser();
+
+
     }
 }
