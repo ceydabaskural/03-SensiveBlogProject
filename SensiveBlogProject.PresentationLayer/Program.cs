@@ -28,6 +28,9 @@ builder.Services.AddScoped<INewsletterService, NewsletterManager>();
 builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
 builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
 
+builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+
 //AddDbContext: veritabanı bağlantılarımızı yapacağımız yeri belirtmek için kullandık
 builder.Services.AddDbContext<SensiveContext>();
 //AddEntityFrameworkStores: identity kütüphanesine ait yapacağımız işlemlere izin verecek olan komut

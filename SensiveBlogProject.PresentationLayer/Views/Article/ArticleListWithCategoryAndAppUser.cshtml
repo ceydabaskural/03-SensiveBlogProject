@@ -28,10 +28,10 @@
                 <td>@item.AppUser.Name</td>
                 <td>@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
                 <td><a href="#" class="btn btn-warning">Detaylar</a></td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Article/DeleteArticle/@item.ArticleId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Article/UpdateArticle/@item.ArticleId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
     </table>
-    <a href="#" class="btn btn-primary">Yeni Makale Girişi</a>
+    <a href="/Article/CreateArticle" class="btn btn-primary">Yeni Makale Girişi</a>
 </div>
