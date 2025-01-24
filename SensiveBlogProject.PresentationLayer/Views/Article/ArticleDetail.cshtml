@@ -1,0 +1,23 @@
+﻿﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_ArticleDetailHeadComponentPartial")
+
+<body>
+
+    <div class="container">
+        @await Component.InvokeAsync("_ArticleDetailListComponentPartial", new { id = ViewBag.i })
+
+        <!-- Yorumlar -->
+        @await Component.InvokeAsync("_ArticleDetailCommentListComponentPartial", new { id = ViewBag.i })
+
+
+        <!-- Yeni Yorum Yapma -->
+        @await Html.PartialAsync("~/Views/Comment/Addcomment.cshtml", new { id = ViewBag.i })
+    </div>
+
+</body>
+</html>

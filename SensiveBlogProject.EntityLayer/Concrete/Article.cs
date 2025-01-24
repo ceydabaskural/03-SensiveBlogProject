@@ -22,5 +22,8 @@ namespace SensiveBlogProject.EntityLayer.Concrete
         //AppUser ile Article arasında bağlantı
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+
+        //Comment ile Article arasında bağlantı
+        public List<Comment> Comments { get; set; }
     }
 }

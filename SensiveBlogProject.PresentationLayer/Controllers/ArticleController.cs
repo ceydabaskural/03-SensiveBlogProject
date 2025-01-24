@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MessagePack;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SensiveBlogProject.BusinessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
@@ -99,6 +100,12 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         {
             _articleService.TDelete(id);
             return RedirectToAction(nameof(ArticleListWithCategoryAndAppUser));
+        }
+
+        public IActionResult ArticleDetail(int id)
+        {
+            var value = _articleService.TGetById(id);
+            return View(value);
         }
     }
 }
