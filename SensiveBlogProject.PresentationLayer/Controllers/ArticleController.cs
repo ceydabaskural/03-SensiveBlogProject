@@ -11,12 +11,14 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
         private readonly IAppUserService _appUserService;
+        private readonly ICommentService _commentService;
 
-        public ArticleController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService)
+        public ArticleController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService, ICommentService commentService)
         {
             _articleService = articleService;
             _categoryService = categoryService;
             _appUserService = appUserService;
+            _commentService = commentService;
         }
 
         //TGetAll içinde Category ismini getiremedik sadece categoryleri Id olarak listeledi. Category.CategoryName dediğimizde hata veriyordu
@@ -104,8 +106,20 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
 
         public IActionResult ArticleDetail(int id)
         {
+            ViewBag.i = id; //ilgili articleın id sini alıyoruz detay sayfasında kullanmak için (ArticleDetail.cs de kullanmak için)
+
             var value = _articleService.TGetById(id);
             return View(value);
         }
+
+        //[HttpPost]
+        //public IActionResult ArticleDetail(Comment comment) //yorum yapma işlemi yapacağız 
+        //{
+        //    comment.CreatedDate = DateTime.Now;
+        //    comment.ArticleId = 0;
+        //    comment.AppUserId = 0;
+
+        //    return RedirectToAction("ArticleList", "Default");
+        //}
     }
 }
