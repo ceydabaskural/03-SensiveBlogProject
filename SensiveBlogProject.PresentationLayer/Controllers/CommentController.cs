@@ -14,8 +14,9 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult AddComment()
+        public PartialViewResult AddComment(int id)
         {
+            ViewBag.i = id;
             return PartialView();
         }
 

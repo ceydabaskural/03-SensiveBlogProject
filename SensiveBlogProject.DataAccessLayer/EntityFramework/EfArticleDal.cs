@@ -31,6 +31,13 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
             return values;
         }
 
+        public List<Article> GetArticlesByAppUserId(int id)
+        {
+            var context = new SensiveContext();
+            var value = context.Articles.Where(x => x.AppUserId == id).ToList();
+            return value;
+        }
+
         public Article GetLastArticle()
         {
             var context = new SensiveContext();

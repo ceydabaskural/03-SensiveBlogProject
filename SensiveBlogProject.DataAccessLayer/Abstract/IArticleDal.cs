@@ -14,8 +14,8 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 
         //hem categorylerin hem yazarların isminin gelmesini istedik
         List<Article> ArticleListWithCategoryAndAppUser();
-
         Article GetLastArticle();
+        List<Article> GetArticlesByAppUserId(int id);
 
     }
 }
