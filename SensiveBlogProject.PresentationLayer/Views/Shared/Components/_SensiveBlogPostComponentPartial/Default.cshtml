@@ -1,0 +1,55 @@
+﻿@model List<Article>
+
+@foreach (var item in Model)
+{
+    <div class="single-recent-blog-post">
+        <div class="thumb">
+            <img class="img-fluid" src="@item.CoverImageUrl" style="height:400px" width="750" alt="">
+            <ul class="thumb-info">
+                <li><a href="#"><i class="ti-user"></i>@item.AppUser.Name</a></li>
+                <li><a href="#"><i class="ti-notepad"></i>@item.CreatedDate.ToShortDateString()</a></li>
+                <li><a href="#"><i class="ti-themify-favicon"></i>@item.Comments.Count()</a></li>
+            </ul>
+        </div>
+        <div class="details mt-20">
+            <a href="blog-single.html">
+                <h3>@item.Title</h3>
+            </a>
+            <p class="tag-list-inline">Tag: <a href="#">@item.Category.CategoryName</a>
+            <p>@item.Description.Substring(0, 200)...</p>
+            <a class="button" href="/Article/Index/@item.ArticleId">Daha Fazla Oku <i class="ti-arrow-right"></i></a>
+        </div>
+    </div>
+}
+<nav class="blog-pagination justify-content-center d-flex">
+    <ul class="pagination">
+
+        <!-- Sayfalama Linkleri -->
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a href="?page=@(ViewBag.CurrentPage - 1)" class="page-link" aria-label="Previous">
+                    <span aria-hidden="true"><i class="ti-angle-left"></i></span>
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a href="?page=@i" class="page-link">@i</a>
+            </li>
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item">
+                <a href="?page=@(ViewBag.CurrentPage + 1)" class="page-link" aria-label="Next">
+                    <span aria-hidden="true"><i class="ti-angle-right"></i></span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+
+

@@ -1,4 +1,5 @@
-﻿using SensiveBlogProject.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.Repositories;
 using SensiveBlogProject.EntityLayer.Concrete;
@@ -16,6 +17,13 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
         //constructor metot oluşturmamız gerekti çünkü generic repository de dependency injection uygulayabilmek için constructor metot oluşturduk
         public EfCategoryDal(SensiveContext context) : base(context)
         {
+        }
+
+        public List<Category> CountCategoriesWithArticles()
+        {
+            var context = new SensiveContext();
+            var value = context.Categories.Include(x => x.Articles).ToList();
+            return value;
         }
     }
 }

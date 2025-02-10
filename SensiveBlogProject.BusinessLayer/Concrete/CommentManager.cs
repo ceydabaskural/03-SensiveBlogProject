@@ -33,9 +33,19 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _commentDal.GetById(id);
         }
 
+        public Comment TGetCommentById(int commentId, int userId)
+        {
+            return _commentDal.GetCommentById(commentId, userId);
+        }
+
         public List<Comment> TGetCommentsByArticleId(int id)
         {
             return _commentDal.GetCommentsByArticleId(id);
+        }
+
+        public List<Comment> TGetCommentsByArticleIdAndAppUser(int id)
+        {
+            return _commentDal.GetCommentsByArticleIdAndAppUser(id);
         }
 
         public void TInsert(Comment entity)

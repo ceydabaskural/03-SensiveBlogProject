@@ -1,42 +1,22 @@
-using SensiveBlogProject.BusinessLayer.Abstract;
-using SensiveBlogProject.BusinessLayer.Concrete;
-using SensiveBlogProject.DataAccessLayer.Abstract;
+using FluentValidation.AspNetCore;
+using SensiveBlogProject.BusinessLayer.Container;
 using SensiveBlogProject.DataAccessLayer.Context;
-using SensiveBlogProject.DataAccessLayer.EntityFramework;
 using SensiveBlogProject.EntityLayer.Concrete;
-using SensiveBlogProject.PresentationLayer.Models;
+using SensiveBlogProject.PresentationLayer.Areas.Author.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-
-builder.Services.AddScoped<IArticleDal, EfArticleDal>();
-builder.Services.AddScoped<IArticleService, ArticleManager>();
-
-builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-builder.Services.AddScoped<ICommentService, CommentManager>();
-
-builder.Services.AddScoped<IContactDal, EfContactDal>();
-builder.Services.AddScoped<IContactService, ContactManager>();
-
-builder.Services.AddScoped<INewsletterDal, EfNewsletterDal>();
-builder.Services.AddScoped<INewsletterService, NewsletterManager>();
-
-builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
-builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
-
-builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
-builder.Services.AddScoped<IAppUserService, AppUserManager>();
 
 //AddDbContext: veritabanı bağlantılarımızı yapacağımız yeri belirtmek için kullandık
 builder.Services.AddDbContext<SensiveContext>();
 //AddEntityFrameworkStores: identity kütüphanesine ait yapacağımız işlemlere izin verecek olan komut
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentityValidator>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.ContainerDependencies();
+
+builder.Services.AddControllersWithViews().AddFluentValidation();
+
 
 var app = builder.Build();
 
@@ -66,6 +46,7 @@ app.UseEndpoints(endpoints =>
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
+
 
 
 app.Run();

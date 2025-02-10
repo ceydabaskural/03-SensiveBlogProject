@@ -1,0 +1,44 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="heading1 margin_0">
+                <h2>Yorumlarım</h2>
+            </div>
+        </div>
+        <div class="full progress_bar_inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="msg_section">
+                        <div class="msg_list_main">
+                            <ul class="msg_list">
+                                @foreach (var item in Model)
+                                {
+                                    <li style="position: relative;">
+                                        <span><img src="@item.Article.CoverImageUrl" class="img-responsive" alt="#" /></span>
+                                        <span>
+                                            <span class="name_user">@item.Article.Title</span>
+                                            <span class="msg_user">@item.Detail</span>
+                                            <span class="time_ago" style="margin-right: 300px;">@item.CreatedDate.ToShortDateString()</span>
+                                        </span>
+                                        <div style="position: absolute; right: 0; top: 2; margin-right:10px">
+                                        <a href="/Author/Comment/DeleteComment/@item.CommentId" style="margin-bottom:15px" class="btn btn-danger">Sil</a>
+                                        <a href="/Author/Comment/UpdateComment/@item.CommentId" class="btn btn-success" style="margin-bottom:15px">Güncelle</a>
+                                        </div>
+                                        <br />
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -9,5 +9,6 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
 {
     public interface IAppUserService : IGenericService<AppUser>
     {
+        public AppUser TGetAppUserInfo();
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using SensiveBlogProject.BusinessLayer.Abstract;
+using SensiveBlogProject.BusinessLayer.ValidationRules.CategoryValidationRules;
 using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 
@@ -30,8 +32,23 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         //category adı 5 karakterden kısa olursa eklemiyor, çünkü categorymanager da buna izin vermedik
         public IActionResult CreateCategory(Category category)
         {
-            _categoryService.TInsert(category);
-            return RedirectToAction(nameof(CategoryList));
+            ModelState.Clear(); //hata mesajlarını türkçe yazdırmasını sağladık    
+            CreateCategoryValidator validationRules = new CreateCategoryValidator();
+            ValidationResult result = validationRules.Validate(category);//categoryden gelen değerlerin geçerliliği kontrol edilecek
+            if (result.IsValid)
+            {
+                _categoryService.TInsert(category);
+                return RedirectToAction("CategoryList");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+
         }
 
         public IActionResult DeleteCategory(int id)

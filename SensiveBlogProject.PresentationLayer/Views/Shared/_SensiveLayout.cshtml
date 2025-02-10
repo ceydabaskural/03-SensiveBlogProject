@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sensive Blog - Home</title>
+    <link rel="icon" href="img/Fevicon.png" type="image/png">
+
+    <link rel="stylesheet" href="/sensive-master/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/linericon/style.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/owl-carousel/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="/sensive-master/css/style.css">
+</head>
+<body>
+    <!--================Header Menu Area =================-->
+    @await Component.InvokeAsync("_SensiveHeaderComponentPartial")
+    <!--================Header Menu Area =================-->
+
+    <main class="site-main">
+        @RenderBody();
+        <!--================Hero Banner start =================-->
+        <!--================Hero Banner end =================-->
+        <!--================ Blog slider start =================-->
+        @await Component.InvokeAsync("_SensiveBlogSliderComponentPartial")
+        <!--================ Blog slider end =================-->
+        <!--================ Start Blog Post Area =================-->
+        <section class="blog-post-area section-margin mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        @await Component.InvokeAsync("_SensiveBlogPostComponentPartial")
+                    </div>
+                    <!-- Start Blog Post Siddebar -->
+                    <div class="col-lg-4 sidebar-widgets">
+                        <div class="widget-wrap">
+
+                            @await Component.InvokeAsync("_SensiveNewsletterComponentPartial")
+
+                            @await Component.InvokeAsync("_SensiveCategoryComponentPartial")
+
+                            @await Component.InvokeAsync("_SensivePopularPostComponentPartial")
+
+                            @await Component.InvokeAsync("_SensiveTagCloudComponentPartial")
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Blog Post Siddebar -->
+            </div>
+        </section>
+        <!--================ End Blog Post Area =================-->
+    </main>
+
+    <!--================ Start Footer Area =================-->
+    @await Component.InvokeAsync("_SensiveFooterComponentPartial")
+    <!--================ End Footer Area =================-->
+
+    <script src="~/sensive-master/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/sensive-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/sensive-master/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/sensive-master/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/sensive-master/js/mail-script.js"></script>
+    <script src="~/sensive-master/js/main.js"></script>
+</body>
+</html>

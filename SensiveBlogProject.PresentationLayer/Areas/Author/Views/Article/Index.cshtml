@@ -1,0 +1,78 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+    int id = 1;
+}
+
+
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Yazılarım</h2>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row column1">
+            <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full price_table padding_infor_info">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive-sm">
+                                    <table class="table table-striped projects">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th style="width: 2%">No</th>
+                                                <th style="width: 15%">Başlık</th>
+                                                <th>Görsel</th>
+                                                <th>Açıklama</th>
+                                                <th>Kategori</th>
+                                                <th>Oluşturulma Tarihi</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                    <td>@id</td>
+                                                    <td>
+                                                        <a>@item.Title</a>
+                                                    </td>
+                                                    <td>
+                                                        <ul class="list-inline">
+                                                            <li>
+                                                                <img width="40" src="@item.CoverImageUrl" class="rounded-circle" alt="#">
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td >@item.Description.Substring(0,80)...</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs">@item.Category.CategoryName</button>
+                                                    </td>
+                                                    <td>@item.CreatedDate.ToShortDateString()</td>
+                                                    <td>
+                                                        <a href="/Author/Article/UpdateArticle/@item.ArticleId" class="btn btn-outline-info">Güncelle</a>
+                                                    </td>
+                                                </tr>
+                                                id++;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="/Author/Article/CreateArticle/" class="btn btn-outline-success" style="margin-right:70px; margin-top:20px">Yeni Yazı Ekle</a>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>

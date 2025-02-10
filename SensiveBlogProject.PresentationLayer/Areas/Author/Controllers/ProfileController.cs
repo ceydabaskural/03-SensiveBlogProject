@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SensiveBlogProject.BusinessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
 using SensiveBlogProject.PresentationLayer.Areas.Author.Models;
 
@@ -14,7 +15,6 @@ namespace SensiveBlogProject.PresentationLayer.Areas.Author.Controllers
         {
             _userManager = userManager;
         }
-
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -24,27 +24,57 @@ namespace SensiveBlogProject.PresentationLayer.Areas.Author.Controllers
             model.Email = user.Email;
             model.Name = user.Name;
             model.Username = user.UserName;
+            model.Description = user.Description;
+            model.ImageUrl = user.ImageUrl;
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UserEditViewModel model) 
+        public async Task<IActionResult> Index(UserEditViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Kullanıcı bulunamadı.");
+                return View(model);
+            }
+
             user.Surname = model.Surname;
             user.Email = model.Email;
             user.Name = model.Name;
             user.UserName = model.Username;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.Password);
+            user.Description = model.Description;
+            user.ImageUrl = model.ImageUrl;
+
+            // Şifre güncellemesi yalnızca kullanıcı şifre alanına bir şey girdiyse yapılır.
+            if (!string.IsNullOrWhiteSpace(model.Password))
+            {
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.Password);
+            }
+
             var result = await _userManager.UpdateAsync(user);
+
             if (result.Succeeded)
             {
-                return RedirectToAction("Index","Default");
+                TempData["SuccessMessage"] = "Profil güncellemesi başarılı!";
+                return RedirectToAction("Index");
             }
-            else
+
+            foreach (var error in result.Errors)
             {
-                return View();
+                ModelState.AddModelError("", error.Description);
             }
+
+            return View(model);
         }
+
+
+
+
     }
 }

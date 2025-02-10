@@ -15,5 +15,12 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
         public EfAppUserDal(SensiveContext context) : base(context)
         {
         }
+
+        public AppUser GetAppUserInfo()
+        {
+            var context = new SensiveContext();
+            var value = context.Users.FirstOrDefault();
+            return value;
+        }
     }
 }

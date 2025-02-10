@@ -1,0 +1,40 @@
+﻿@model List<Article>
+
+<style>
+    .hero-banner{
+        background-image: url("/sensive-master/img/banner/flowerchat.png");
+    }
+</style>
+
+
+<section class="mb-30px">
+    <div class="container">
+        <div class="hero-banner">
+            <div class="hero-banner__content">
+                <h3>Fikirler, Geziler ve Daha Fazlası</h3>
+                <h1>Hayatı Keşfet!</h1>
+                <h4>@DateTime.Now.ToShortDateString()</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="owl-carousel owl-theme blog-slider">
+            @foreach (var item in Model)
+            {
+                <div class="card blog__slide text-center">
+                    <div class="blog__slide__img">
+                        <img class="card-img rounded-0" src="@item.CoverImageUrl" style="height:250px" width="250" alt="">
+                    </div>
+                    <div class="blog__slide__content">
+                        <a class="blog__slide__label" href="#">@item.Category.CategoryName</a>
+                        <h3><a href="#">@item.Title</a></h3>
+                        <p>@item.CreatedDate.ToShortDateString()</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

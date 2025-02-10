@@ -5,17 +5,9 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
 {
     public class DefaultController : Controller
     {
-        private readonly IArticleService _articleService;
-
-        public DefaultController(IArticleService articleService)
+        public IActionResult Index()
         {
-            _articleService = articleService;
-        }
-
-        public IActionResult ArticleList()
-        {
-            var values = _articleService.TArticleListWithCategoryAndAppUser();
-            return View(values);
+            return View();
         }
     }
 }

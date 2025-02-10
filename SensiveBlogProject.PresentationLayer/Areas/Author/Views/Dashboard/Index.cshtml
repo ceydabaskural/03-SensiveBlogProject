@@ -1,0 +1,224 @@
+﻿@model AppUser
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Dashboard</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row column1">
+            <div class="col-md-8 col-lg-4">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-user yellow_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@Model.Name @Model.Surname</p>
+                            <p class="head_couter">Hoşgeldiniz!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-cloud-download green_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@ViewBag.blog</p>
+                            <p class="head_couter">Blog Sayısı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-comments-o red_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@ViewBag.comment</p>
+                            <p class="head_couter">Yorum Sayısı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- graph -->
+        <div class="row column1 social_media_section">
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons fb margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>35k</strong></span>
+                                <span>Arkadaş</span>
+                            </li>
+                            <li>
+                                <span><strong>128</strong></span>
+                                <span>Akış</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons tw margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>584k</strong></span>
+                                <span>Takipçi</span>
+                            </li>
+                            <li>
+                                <span><strong>978</strong></span>
+                                <span>Tweets</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons linked margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-linkedin"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>758+</strong></span>
+                                <span>Bağlantı</span>
+                            </li>
+                            <li>
+                                <span><strong>365</strong></span>
+                                <span>Akış</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons google_p margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-google-plus"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>450</strong></span>
+                                <span>Takipçi</span>
+                            </li>
+                            <li>
+                                <span><strong>57</strong></span>
+                                <span>Grup</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end graph -->
+        <div class="row column3">
+            <!-- testimonial -->
+            <div class="col-md-6">
+                <!-- added height for testimonial and calender -->
+                <div style="height:510px" class="dark_bg full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Referanslar</h2>
+                        </div>
+                    </div>
+                    <div class="full graph_revenue">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="content testimonial">
+                                    <div id="testimonial_slider" class="carousel slide" data-ride="carousel">
+                                        <!-- Wrapper for carousel items -->
+                                        <div class="carousel-inner">
+                                            <div class="item carousel-item active">
+                                                <div class="img-box"><img src="~/pluto-1.0.0/images/layout_img/user_img.jpg" alt=""></div>
+                                                <p class="testimonial">"Yazarın karakterleri öyle gerçekçi ve duygusal ki sanki onların hayatını birebir yaşıyormuş gibi hissediyorum. Her sayfa ayrı bir deneyim!"..</p>
+                                                <p class="overview"><b>Selin Kara</b>İç Mimar</p>
+                                            </div>
+                                            <div class="item carousel-item">
+                                                <div class="img-box"><img src="~/pluto-1.0.0/images/layout_img/msg1.png" alt=""></div>
+                                                <p class="testimonial">Anlatımı o kadar akıcı ve sürükleyici ki bir solukta biten kitaplarıyla zamanın nasıl geçtiğini anlamıyorsunuz...</p>
+                                                <p class="overview"><b>Eren Yalçın</b>Gazeteci</p>
+                                            </div>
+                                            <div class="item carousel-item">
+                                                <div class="img-box"><img src="~/pluto-1.0.0/images/layout_img/msg4.png" alt=""></div>
+                                                <p class="testimonial">Eserlerinde verdiği güçlü mesajlar bana ilham veriyor. Özellikle hayata dair küçük ama değerli dersler her zaman zihnimde kalıyor..</p>
+                                                <p class="overview"><b>Mert Demirkan</b>Edebiyat Öğretmeni</p>
+                                            </div>
+                                        </div>
+                                        <!-- Carousel controls -->
+                                        <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                        <a class="carousel-control right carousel-control-next" href="#testimonial_slider" data-slide="next">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end testimonial -->
+            <!-- progress bar -->
+            <div class="col-md-6">
+                <div style="height:510px" class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2><i class="fa fa-calendar" aria-hidden="true"></i> Takvim</h2>
+                        </div>
+                    </div>
+                    <div class="full padding_infor_info">
+                        <div class="invoice_inner">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="white_shd full margin_bottom_30">
+                                        <div class="full progress_bar_inner">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="full">
+                                                        <div class="ui calendar" id="example14"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end progress bar -->
+        </div>
+    </div>
+</div>

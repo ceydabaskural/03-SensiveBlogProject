@@ -33,6 +33,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _categoryDal.GetById(id);
         }
 
+        public List<Category> TCountCategoriesWithArticles()
+        {
+            return _categoryDal.CountCategoriesWithArticles();
+        }
+
         public void TInsert(Category entity)
         {
             if (entity.CategoryName.Length>=5 & entity.CategoryName.Length <= 50)

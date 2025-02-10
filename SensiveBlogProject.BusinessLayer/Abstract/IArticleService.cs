@@ -13,6 +13,9 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
         public List<Article> TArticleListWithCategoryAndAppUser();
         public Article TGetLastArticle();
         public List<Article> TGetArticlesByAppUserId(int id);
+        public List<Article> TGetLastFiveArticle();
+        public List<Article> TGetPopularBlogs();
+        public Article TGetArticleById(int id);
     }
 }
     

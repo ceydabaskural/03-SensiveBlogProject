@@ -1,10 +1,12 @@
 ﻿@model Comment
+<div class="comment-form">
+    <h4>Yorum Yap</h4>
 
-<form method="post" asp-action="AddComment" asp-controller="Comment">
-    <div class="new-comment">
-        <h2>Yeni Yorum Yap</h2>
-        <input type="text" asp-for="ArticleId" readonly />
-        <textarea placeholder="Yorumunuzu buraya yazın..."></textarea>
-        <button class="btn">Gönder</button>
-    </div>
-</form>
+    <form method="post" asp-action="AddComment" asp-controller="Comment">
+        <input type="hidden" name="ArticleId" value="@Model.ArticleId" />
+        <div class="form-group">
+            <textarea class="form-control mb-10" asp-for="Detail" rows="8" placeholder="Mesajınız.." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+        </div>
+        <button class="button submit_btn">Gönder</button>
+    </form>
+</div>

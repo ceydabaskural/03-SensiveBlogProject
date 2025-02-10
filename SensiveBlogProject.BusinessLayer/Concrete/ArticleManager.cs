@@ -38,6 +38,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _articleDal.GetAll();
         }
 
+        public Article TGetArticleById(int id)
+        {
+            return _articleDal.GetArticleById(id);
+        }
+
         public List<Article> TGetArticlesByAppUserId(int id)
         {
             return _articleDal.GetArticlesByAppUserId(id);
@@ -51,6 +56,16 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
         public Article TGetLastArticle()
         {
             return _articleDal.GetLastArticle();
+        }
+
+        public List<Article> TGetLastFiveArticle()
+        {
+            return _articleDal.GetLastFiveArticle();
+        }
+
+        public List<Article> TGetPopularBlogs()
+        {
+            return _articleDal.GetPopularBlogs();
         }
 
         public void TInsert(Article entity)

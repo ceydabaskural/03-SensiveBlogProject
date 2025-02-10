@@ -9,5 +9,6 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
     public interface IAppUserDal : IGenericDal<AppUser>
     {
+        AppUser GetAppUserInfo();
     }
 }

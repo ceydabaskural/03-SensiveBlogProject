@@ -1,8 +1,11 @@
 ﻿using MessagePack;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json.Linq;
 using SensiveBlogProject.BusinessLayer.Abstract;
 using SensiveBlogProject.EntityLayer.Concrete;
+using System.Security.Claims;
 
 namespace SensiveBlogProject.PresentationLayer.Controllers
 {
@@ -104,22 +107,25 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
             return RedirectToAction(nameof(ArticleListWithCategoryAndAppUser));
         }
 
-        public IActionResult ArticleDetail(int id)
+        public IActionResult Index(int id)
         {
-            ViewBag.i = id; //ilgili articleın id sini alıyoruz detay sayfasında kullanmak için (ArticleDetail.cs de kullanmak için)
+            //ViewData ile blog detaylarının arka planı için image taşıdım:
+            ViewData["BannerImage"] = "/sensive-master/img/banner/blogchat.png";
 
-            var value = _articleService.TGetById(id);
+            ViewBag.i = id;
+
+            // Boş veri kontrolü
+            var value = _articleService.TGetArticleById(id);
+
+            if (value == null)
+            {
+                // Eğer makale bulunamazsa kullanıcıya hata sayfası gösterilebilir
+                return NotFound("İlgili makale bulunamadı.");
+            }
+
+            ViewBag.ArticleId = value.ArticleId;
             return View(value);
         }
 
-        //[HttpPost]
-        //public IActionResult ArticleDetail(Comment comment) //yorum yapma işlemi yapacağız 
-        //{
-        //    comment.CreatedDate = DateTime.Now;
-        //    comment.ArticleId = 0;
-        //    comment.AppUserId = 0;
-
-        //    return RedirectToAction("ArticleList", "Default");
-        //}
     }
 }

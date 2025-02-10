@@ -28,6 +28,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
            return _appUserDal.GetAll();
         }
 
+        public AppUser TGetAppUserInfo()
+        {
+            return _appUserDal.GetAppUserInfo();
+        }
+
         public AppUser TGetById(int id)
         {
             throw new NotImplementedException();

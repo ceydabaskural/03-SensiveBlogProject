@@ -1,0 +1,125 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sensive Blog - Home</title>
+    <link rel="icon" href="img/Fevicon.png" type="image/png">
+
+    <link rel="stylesheet" href="/sensive-master/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/linericon/style.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/sensive-master/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/sensive-master/css/style.css">
+</head>
+<body>
+    <!--================Header Menu Area =================-->
+    @await Component.InvokeAsync("_SensiveHeaderComponentPartial")
+    <!--================Header Menu Area =================-->
+
+    <main class="site-main">
+        <!--================Hero Banner start =================-->
+        <!--================Hero Banner end =================-->
+        <!--================ Blog slider start =================-->
+        <!--================ Blog slider end =================-->
+        <!--================ Start Blog Post Area =================-->
+
+        <section class="mb-30px">
+            <div class="container">
+                <div class="hero-banner hero-banner--sm" style="background-image: url('@ViewData["ContactImage"]');">
+                    <div class="hero-banner__content">
+                        <h1>İletişim</h1>
+                        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-margin--small section-margin">
+            <div class="container">
+                <div class="d-none d-sm-block mb-5 pb-4">
+                    <div id="map"></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d200065.48496819742!2d26.91490423074579!3d38.417828665296234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd862a762cacd%3A0x628cbba1a59ce8fe!2zxLB6bWly!5e0!3m2!1sen!2str!4v1739192344498!5m2!1sen!2str" width="1100" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="column">
+                    <div class="col-md-12 col-lg-4 mb-4 mb-md-0">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>İzmir/Türkiye</h3>
+                                <p>-</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-headphone"></i></span>
+                            <div class="media-body">
+                                <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
+                                <p>Hafta içi 9.00-16.00</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3><a href="mailto:support@colorlib.com">support@colorlib.com</a></h3>
+                                <p>İletişime geçin!</p>
+                            </div>
+                        </div>
+                    </div>@* 
+                    <div class="col-md-8 col-lg-9">
+                        <form action="#/" class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject">
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="form-group">
+                                        <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center text-md-right mt-3">
+                                <button type="submit" class="button button--active button-contactForm">Send Message</button>
+                            </div>
+                        </form>
+                    </div> *@
+                </div>
+            </div>
+        </section>
+        <!--================ End Blog Post Area =================-->
+    </main>
+
+    <!--================ Start Footer Area =================-->
+    @await Component.InvokeAsync("_SensiveFooterComponentPartial")
+    <!--================ End Footer Area =================-->
+
+    <script src="~/sensive-master/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/sensive-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/sensive-master/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/sensive-master/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/sensive-master/js/mail-script.js"></script>
+    <script src="~/sensive-master/js/main.js"></script>
+</body>
+</html>
+
+
+
+

@@ -2,28 +2,101 @@
 @model UserEditViewModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
 }
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Profilim</h2>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row column1">
+            <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div style="margin-left:150px" class="full price_table padding_infor_info">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
+                                <div class="contact_blog">
+                                    <h4 class="brief">Yazar</h4>
+                                    <div class="contact_inner">
+                                        <div class="left">
+                                            <h3>@Model.Name @Model.Surname</h3>
+                                            <p><strong>Hakkımda: </strong>@Model.Description</p>
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+                                        </div>
+                                        <div class="right">
+                                            <div class="profile_contacts">
+                                                <img class="img-responsive" src="@Model.ImageUrl " alt="#" />
+                                            </div>
+                                            <br />
+                                            <ul style="margin-left:15px" class="list-unstyled">
+                                                <li><i class="fa fa-envelope-o"></i> : @Model.Email</li>
+                                                <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                <li><i class="fa fa-user"></i> : @Model.Username</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bottom_list">
+                                            <div class="left_rating">
+                                                <p class="ratings">
+                                                    <a href="#"><span class="fa fa-star"></span></a>
+                                                    <a href="#"><span class="fa fa-star"></span></a>
+                                                    <a href="#"><span class="fa fa-star"></span></a>
+                                                    <a href="#"><span class="fa fa-star"></span></a>
+                                                    <a href="#"><span class="fa fa-star-o"></span></a>
+                                                </p>
+                                            </div>
+                                            @* <div class="right_button">
+                                                <button type="button" class="btn btn-success btn-xs">
+                                                    <i class="fa fa-user">
+                                                    </i> <i class="fa fa-comments-o"></i>
+                                                </button>
+                                                @* <a href="@Url.Action("UpdateProfile", "Profile", new { area = "Author" })" class="btn btn-primary btn-xs"><i class="fa fa-user"></i> Profili Düzenle</a> *@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end column contact blog -->
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <form method="post">
+                    <label>Adınız</label>
+                    <input type="text" asp-for="Name" class="form-control" required />
+                    <br />
+                    <label>Soyadınız</label>
+                    <input type="text" asp-for="Surname" class="form-control" required />
+                    <br />
+                    <label>Kullanıcı Adınız</label>
+                    <input type="text" asp-for="Username" class="form-control" required />
+                    <br />
+                    <label>Email Adresiniz</label>
+                    <input type="email" asp-for="Email" class="form-control" required />
+                    <br />
+                    <label>Şifreniz</label>
+                    <input type="text" asp-for="Password" class="form-control" required />
+                    <br />
+                    <label>Hakkımda</label>
+                    <textarea rows="4" cols="50" class="form-control" asp-for="Description"></textarea>
+                    <br />
+                    <div class="form-group">
+                        <label>Fotoğraf Seçin</label>
+                        <br />
+                        <input type="file" asp-for="ImageUrl" />
+                    </div>
+                    <button class="btn btn-info">Güncelle</button>
+                </form>
 
-<form  method="post">
-    <div class="container">
-        <label>Adınız</label>
-        <input type="text" asp-for="Name" class="form-control" />
-        <br />
-        <label>Soyadınız</label>
-        <input type="text" asp-for="Surname" class="form-control" />
-        <br />
-        <label>Kullanıcı Adınız</label>
-        <input type="text" asp-for="Username" class="form-control" />
-        <br />
-        <label>Email</label>
-        <input type="text" asp-for="Email" class="form-control" />
-        <br />
-        <label>Şifre</label>
-        <input type="password" asp-for="Password" class="form-control" />
-        <br />
-        <button class="btn btn-info">Profili Düzenle</button>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- footer -->
     </div>
-    </form>
+    <!-- end dashboard inner -->
+</div>
