@@ -46,7 +46,7 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
         {
             var context = new SensiveContext();
             var value = context.Comments
-                   .Where(a => a.AppUserId == id)
+                   .Where(a => a.ArticleId == id)
                    .Include(a => a.Article)
                    .Include(a => a.AppUser)
                    .ToList();

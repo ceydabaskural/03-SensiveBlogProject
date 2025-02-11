@@ -42,7 +42,7 @@ namespace SensiveBlogProject.PresentationLayer.Areas.Author.Controllers
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Login", new { area = "Author" });
+                return RedirectToAction("Index", "Login");
             }
             else
             {
