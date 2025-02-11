@@ -22,7 +22,7 @@
 
 ### 💬İletişim
 
-#### 🔖Kullanıcılar mesaj göndererek site yöneticileriyle iletişim kurabilir.
+#### 🔖Entegre Google Maps haritası ile kullanıcılar doğrudan konum bilgisine ulaşabilir ve iletişim için gerekli bilgileri görebilir.
 
 
 
