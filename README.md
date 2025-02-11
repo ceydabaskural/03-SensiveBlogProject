@@ -1,4 +1,4 @@
-# 02-SensiveBlog
+# 03-SensiveBlog
 
 ### 🌟Kullanıcıların blog yazılarını okuyabildiği, yorum yapabildiği ve üye olduktan sonra kendi profilleri üzerinden blog yazıları yazabildiği bu blog projesi '.NET Core (6.0) ve Repository Design Pattern' kullanarak oluşturulmuştur ve 'vitrin paneli ve kullanıcı paneli' olmak üzere iki ana bölümden oluşmaktadır.
 
